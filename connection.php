@@ -6,26 +6,14 @@ $username = "clothesapp_usepoetry";
 $password = "f52ce8802e046628041c13e04e6b2adf4c714e3d";
 
 // Create connection
-$conn = new mysqli($hostname, $username, $password, $database, $port);
+$connectNow = new mysqli($hostname, $username, $password, $database, $port);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully\n";
-
-// Execute query
-$query = "SELECT 1+1 AS result";
-$result = $conn->query($query);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "Result: " . $row['result'] . "\n";
-    }
-} else {
-    echo "No results found\n";
+if ($connectNow->connect_error) {
+    die("Connection failed: " . $connectNow->connect_error);
 }
 
-// Close connection
-$conn->close();
+// Set charset to UTF-8 (optional)
+$connectNow->set_charset("utf8");
+
 ?>
